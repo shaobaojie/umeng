@@ -1,7 +1,7 @@
 <?php
-namespace xieyi64\UmengLaravel\IOS;
+namespace Umeng\Android;
 
-class IOSFilecast extends IOSNotification {
+class AndroidFilecast extends AndroidNotification {
 	function  __construct() {
 		parent::__construct();
 		$this->data["type"] = "filecast";
@@ -35,7 +35,7 @@ class IOSFilecast extends IOSNotification {
         $result = curl_exec($ch);
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         $curlErrNo = curl_errno($ch);
-        $curlErr = curl_error($ch);
+        $curlErr = curl_error($ch);  
         curl_close($ch);
         print($result . "\r\n");
         if ($httpCode == "0") //time out 

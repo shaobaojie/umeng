@@ -1,11 +1,11 @@
 {
-    "name": "xieyi64/umeng-laravel5",
-    "description": "",
+    "name": "umeng/umeng",
+    "description": "umeng laravel sdk",
     "keywords": ["apns","gcm","push","notification", "laravel","laravel5","umeng"],
     "authors": [
         {
-            "name": "xieyi64",
-            "email": "xieyi64@gmail.com"
+            "name": "baojie.shao",
+            "email": "26416@163.com"
         }
     ],
     "license": "MIT",
@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-0": {
-            "xieyi64\\UmengLaravel": "src/"
+            "Umeng\\": "src/"
         }
     },
     "minimum-stability": "stable"

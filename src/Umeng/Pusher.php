@@ -5,7 +5,7 @@
  * Date: 15/6/16
  * Time: 上午9:37
  */
-namespace xieyi64\UmengLaravel;
+namespace Umeng;
 
 use Illuminate\Support\Facades\Config;
 

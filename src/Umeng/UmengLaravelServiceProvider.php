@@ -1,8 +1,8 @@
-<?php namespace xieyi64\UmengLaravel;
+<?php namespace Umeng;
 
 use Illuminate\Support\ServiceProvider;
-use xieyi64\UmengLaravel\Android\AndroidPusher;
-use xieyi64\UmengLaravel\IOS\IOSPusher;
+use Umeng\Android\AndroidPusher;
+use Umeng\IOS\IOSPusher;
 
 class UmengLaravelServiceProvider extends ServiceProvider
 {
@@ -24,7 +24,7 @@ class UmengLaravelServiceProvider extends ServiceProvider
     {
 //        var_dump(__DIR__.'/config.php', config_path('umeng-laravel.php'));die;
         $this->publishes([
-            __DIR__.'/config.php' => config_path('umeng-laravel.php'),
+            __DIR__ . '/config.php' => config_path('umeng-laravel.php'),
         ],'config');
     }
 

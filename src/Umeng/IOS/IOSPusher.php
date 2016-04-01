@@ -6,11 +6,11 @@
  * Time: 14:08
  */
 
-namespace xieyi64\UmengLaravel\IOS;
+namespace Umeng\IOS;
 
 
-use xieyi64\UmengLaravel\Pusher;
-use xieyi64\UmengLaravel\Exception\Exception;
+use Umeng\Pusher;
+use Umeng\Exception\Exception;
 
 class IOSPusher extends Pusher
 {
@@ -39,7 +39,7 @@ class IOSPusher extends Pusher
      * @param array $aps ['alert'=>'','badge'=>0,'sound'=>'chime','content-available'=>'']
      * @param array $extra
      * @return int|mixed
-     * @throws \xieyi64\UmengLaravel\Exception\Exception
+     * @throws \Umeng\Exception\Exception
      */
     public function unicast($device_tokens = '', $aps = [], $extra = [])
     {

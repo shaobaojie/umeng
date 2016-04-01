@@ -6,7 +6,7 @@
  * Time: 09:21
  */
 
-namespace xieyi64\UmengLaravel\Facades;
+namespace Umeng\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

@@ -1,5 +1,5 @@
 <?php
-namespace xieyi64\UmengLaravel\Android;
+namespace Umeng\Android;
 
 class AndroidUnicast extends AndroidNotification {
 	function __construct() {

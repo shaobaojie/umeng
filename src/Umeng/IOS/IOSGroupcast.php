@@ -1,7 +1,7 @@
 <?php
-namespace xieyi64\UmengLaravel\Android;
+namespace Umeng\IOS;
 
-class AndroidGroupcast extends AndroidNotification {
+class IOSGroupcast extends IOSNotification {
 	function  __construct() {
 		parent::__construct();
 		$this->data["type"] = "groupcast";

@@ -1,5 +1,5 @@
 <?php
-namespace xieyi64\UmengLaravel\IOS;
+namespace Umeng\IOS;
 
 class IOSUnicast extends IOSNotification {
 	function __construct() {

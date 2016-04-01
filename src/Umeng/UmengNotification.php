@@ -1,7 +1,7 @@
 <?php
-namespace xieyi64\UmengLaravel;
+namespace Umengl;
 
-use xieyi64\UmengLaravel\Exception\Exception;
+use Umeng\Exception\Exception;
 
 abstract class UmengNotification
 {

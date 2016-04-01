@@ -6,7 +6,7 @@
  * Time: 下午1:57
  */
 
-namespace xieyi64\UmengLaravel\Exception;
+namespace Umeng\Exception;
 
 
 class Exception extends \Exception
