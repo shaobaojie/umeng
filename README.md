@@ -4,7 +4,7 @@
 
 1.composer 安装
 
-    composer require umeng/umeng @dev
+    composer require umeng/umeng dev-master
 
 2.在app.php 中添加ServiceProvider、Facades
 
