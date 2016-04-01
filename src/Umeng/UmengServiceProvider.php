@@ -39,7 +39,7 @@ class UmengServiceProvider extends ServiceProvider
             return new IOSPusher($app['config']['Services']['umeng']['ios_appKey'], $app['config']['Services']['umeng']['ios_app_master_secret']);
         });
         $this->app->singleton('umeng.android', function ($app) {
-            return new AndroidPusher($app['config']['Services']['umeng']['android_appkey'], $app['config']['Services']['umeng']['android_app_master_secret']);
+            return new AndroidPusher($app['config']['Services']['umeng']['android_appKey'], $app['config']['Services']['umeng']['android_app_master_secret']);
         });
     }
 

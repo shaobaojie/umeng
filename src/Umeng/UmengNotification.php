@@ -1,5 +1,4 @@
-<?php
-namespace Umengl;
+<?php namespace Umeng;
 
 use Umeng\Exception\Exception;
 
@@ -23,9 +22,9 @@ abstract class UmengNotification
      * 2)The value for key 'payload' is set in the subclass(AndroidNotification or IOSNotification), as their payload structures are different.
      */
     protected $data = array(
-        "appkey" => NULL,
-        "timestamp" => NULL,
-        "type" => NULL,
+        "appkey"          => NULL,
+        "timestamp"       => NULL,
+        "type"            => NULL,
         //"device_tokens"  => "xx",
         //"alias"          => "xx",
         //"file_id"        => "xx",
@@ -92,7 +91,7 @@ abstract class UmengNotification
         curl_setopt($ch, CURLOPT_TIMEOUT, 60);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $postBody);
         $result = curl_exec($ch);
-        $result =json_decode($result,true);
+        $result = json_decode($result, true);
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 //        $curlErrNo = curl_errno($ch);
         $curlErr = curl_error($ch);
@@ -101,7 +100,7 @@ abstract class UmengNotification
             throw new Exception($curlErr, $httpCode, 0);
         } else if ($httpCode != "200") {
 //            return $result;
-            throw new Exception($result['ret'], $httpCode,$result['data']['error_code']);
+            throw new Exception($result['ret'], $httpCode, $result['data']['error_code']);
         } else {
             return $result['data']['task_id'];
 //            return $httpCode;
