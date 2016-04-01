@@ -1,6 +1,6 @@
 # UMeng PHP SDK For Laravel 5.2
 
-整合修改官方的示例，融合到Laravel 5中。
+整合修改官方的示例，融合到Laravel 5.2 中。
 
 1.composer 安装
 
