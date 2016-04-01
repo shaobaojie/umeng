@@ -1,0 +1,22 @@
+{
+    "name": "xieyi64/umeng-laravel5",
+    "description": "",
+    "keywords": ["apns","gcm","push","notification", "laravel","laravel5","umeng"],
+    "authors": [
+        {
+            "name": "xieyi64",
+            "email": "xieyi64@gmail.com"
+        }
+    ],
+    "license": "MIT",
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "~5"
+    },
+    "autoload": {
+        "psr-0": {
+            "xieyi64\\UmengLaravel": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
