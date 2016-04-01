@@ -22,7 +22,6 @@ class UmengServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-//        var_dump(__DIR__.'/config.php', config_path('umeng-laravel.php'));die;
         $this->publishes([
             __DIR__ . '/config.php' => config_path('Services/umeng.php'),
         ], 'config');
@@ -51,7 +50,7 @@ class UmengServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array('umeng.ios','umeng.android');
+        return array('umeng.ios', 'umeng.android');
     }
 
 }
