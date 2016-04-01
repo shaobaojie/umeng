@@ -4,7 +4,7 @@ use Illuminate\Support\ServiceProvider;
 use Umeng\Android\AndroidPusher;
 use Umeng\IOS\IOSPusher;
 
-class UmengLaravelServiceProvider extends ServiceProvider
+class UmengServiceProvider extends ServiceProvider
 {
 
 
@@ -24,8 +24,8 @@ class UmengLaravelServiceProvider extends ServiceProvider
     {
 //        var_dump(__DIR__.'/config.php', config_path('umeng-laravel.php'));die;
         $this->publishes([
-            __DIR__ . '/config.php' => config_path('umeng-laravel.php'),
-        ],'config');
+            __DIR__ . '/config.php' => config_path('Services/umeng.php'),
+        ], 'config');
     }
 
     /**
@@ -36,11 +36,11 @@ class UmengLaravelServiceProvider extends ServiceProvider
     public function register()
     {
         //
-        $this->app->bind('umeng.ios', function ($app) {
-            return new IOSPusher($app['config']['umeng-laravel.ios_appKey'], $app['config']['umeng-laravel.ios_app_master_secret']);
+        $this->app->singleton('umeng.ios', function ($app) {
+            return new IOSPusher($app['config']['Services']['umeng']['ios_appKey'], $app['config']['Services']['umeng']['ios_app_master_secret']);
         });
-        $this->app->bind('umeng.android', function ($app) {
-            return new AndroidPusher($app['config']['umeng-laravel.android_appKey'], $app['config']['umeng-laravel.android_app_master_secret']);
+        $this->app->singleton('umeng.android', function ($app) {
+            return new AndroidPusher($app['config']['Services']['umeng']['android_appkey'], $app['config']['Services']['umeng']['android_app_master_secret']);
         });
     }
 

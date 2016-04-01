@@ -24,18 +24,15 @@ class Pusher
 
     protected $android_alias_type = null;
 
-    public $production =true;
+    public $production = true;
 
     public function __construct($key, $secret)
     {
         $this->app_key = $key;
         $this->app_master_secret = $secret;
         $this->timestamp = strval(time());
-        $this->ios_alias_type = Config::get('umeng-laravel.ios_alias_type');
-        $this->android_alias_type = Config::get('umeng-laravel.android_alias_type');
-        $this->production = Config::get('umeng-laravel.production');
-
-        dd(Config::get('umeng-laravel.ios_alias_type'));
-
+        $this->ios_alias_type = Config('Service.umeng.ios_alias_type');
+        $this->android_alias_type = Config('Service.umeng.android_alias_type');
+        $this->production = Config('Service.umeng.production');
     }
 }

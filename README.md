@@ -1,24 +1,24 @@
-# UMeng PHP SDK For Laravel 5.*
+# UMeng PHP SDK For Laravel 5.1
 
 整合修改官方的示例，融合到Laravel 5中。
 
 1.composer 安装
 
-    composer require xieyi64/umeng-laravel5 @dev
+    composer require umeng/umeng @dev
 
 2.在app.php 中添加ServiceProvider、Facades
 
-    'xieyi64\UmengLaravel\UMengLaravelServiceProvider',
+    'Umeng\UMengLaravelServiceProvider',
 aliases:
 
-    'Android'           => 'xieyi64\UmengLaravel\Facades\Android',
-    'IOS'               => 'xieyi64\UmengLaravel\Facades\IOS',
+    'Android'           => 'Umeng\Facades\Android',
+    'IOS'               => 'Umeng\Facades\IOS',
 
 3.配置文件
 
-    php artisan config:publish xieyi64/umeng-laravel
+    php artisan  vendor:publish  umeng/umeng
  
- 修改配置文件config/packages/xieyi64/umeng-laravel/config.php 填上你自己的Key Secret
+ 修改配置文件 config/Services/umeng.php 填上你自己的Key Secret
  
 4.示例
 
