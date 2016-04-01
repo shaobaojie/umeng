@@ -16,7 +16,7 @@ aliases:
 
 3.配置文件
 
-    php artisan  vendor:publish  umeng/umeng
+    php artisan vendor:publish
  
  修改配置文件 config/Services/umeng.php 填上你自己的Key Secret
  
