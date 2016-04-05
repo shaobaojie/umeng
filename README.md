@@ -8,7 +8,7 @@
 
 2.在app.php 中添加ServiceProvider、Facades
 
-    'Umeng\UMengLaravelServiceProvider',
+    'Umeng\UMengServiceProvider',
 aliases:
 
     'Android'           => 'Umeng\Facades\Android',
