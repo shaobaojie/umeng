@@ -45,7 +45,37 @@ class AndroidPusher extends Pusher
             return $e->getUmengCode();
         }
     }
-    
+
+    /**
+     * 广播
+     * @param array $body
+     * @param array $extra
+     * @return int
+     * @throws \Umeng\Android\Exception
+     */
+    public function broadcast($body = [], $extra = []) {
+        try {
+            $brocast = new AndroidBroadcast();
+            $brocast->setAppMasterSecret($this->app_master_secret);
+            $brocast->setPredefinedKeyValue("appkey",           $this->app_key);
+            $brocast->setPredefinedKeyValue("timestamp",        $this->timestamp);
+
+            foreach ($body as $key => $val) {
+                $brocast->setPredefinedKeyValue($key, $val);
+            }
+            // Set 'production_mode' to 'false' if it's a test device.
+            // For how to register a test device, please see the developer doc.
+            $brocast->setPredefinedKeyValue("production_mode", $this->production);
+            // [optional]Set extra fields
+            // Set extra fields
+            foreach ($extra as $key => $val) {
+                $brocast->setExtraField($key, $val);
+            }
+            return $brocast->send();
+        } catch (Exception $e) {
+            return $e->getUmengCode();
+        }
+    }
     /** customizedcast
      * @param string $alias
      * @param array $body
