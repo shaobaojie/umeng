@@ -1,6 +1,6 @@
 <?php namespace Umeng;
 
-use Umeng\Exception\Exception;
+use Umeng\Exception\UmengException;
 
 abstract class UmengNotification
 {
@@ -54,7 +54,7 @@ abstract class UmengNotification
     public function isComplete()
     {
         if (is_null($this->appMasterSecret))
-            throw new Exception("Please set your app master secret for generating the signature!");
+            throw new UmengException("Please set your app master secret for generating the signature!");
         $this->checkArrayValues($this->data);
         return TRUE;
     }
@@ -63,7 +63,7 @@ abstract class UmengNotification
     {
         foreach ($arr as $key => $value) {
             if (is_null($value))
-                throw new Exception($key . " is NULL!");
+                throw new UmengException($key . " is NULL!");
             else if (is_array($value)) {
                 $this->checkArrayValues($value);
             }
@@ -97,10 +97,10 @@ abstract class UmengNotification
         $curlErr = curl_error($ch);
         curl_close($ch);
         if ($httpCode == "0") {
-            throw new Exception($curlErr, $httpCode, 0);
+            throw new UmengException($curlErr, $httpCode, 0);
         } else if ($httpCode != "200") {
 //            return $result;
-            throw new Exception($result['ret'], $httpCode, $result['data']['error_code']);
+            throw new UmengException($result['ret'], $httpCode, $result['data']['error_code']);
         } else {
             return $result['data']['task_id'];
 //            return $httpCode;

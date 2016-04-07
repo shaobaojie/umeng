@@ -23,27 +23,23 @@ class AndroidPusher extends Pusher
      */
     public function unicast($device_tokens = '', $body = [], $extra = [])
     {
-        try {
-            $unicast = new AndroidUnicast();
-            $unicast->setAppMasterSecret($this->app_master_secret);
-            $unicast->setPredefinedKeyValue("appkey", $this->app_key);
-            $unicast->setPredefinedKeyValue("timestamp", $this->timestamp);
-            // Set your device tokens here
-            $unicast->setPredefinedKeyValue("device_tokens", $device_tokens);
-            foreach ($body as $key => $val) {
-                $unicast->setPredefinedKeyValue($key, $val);
-            }
-            // Set 'production_mode' to 'false' if it's a test device.
-            // For how to register a test device, please see the developer doc.
-            $unicast->setPredefinedKeyValue("production_mode", $this->production);
-            // Set extra fields
-            foreach ($extra as $key => $val) {
-                $unicast->setExtraField($key, $val);
-            }
-            return $unicast->send();
-        } catch (UmengException $e) {
-            return $e->getUmengCode();
+        $unicast = new AndroidUnicast();
+        $unicast->setAppMasterSecret($this->app_master_secret);
+        $unicast->setPredefinedKeyValue("appkey", $this->app_key);
+        $unicast->setPredefinedKeyValue("timestamp", $this->timestamp);
+        // Set your device tokens here
+        $unicast->setPredefinedKeyValue("device_tokens", $device_tokens);
+        foreach ($body as $key => $val) {
+            $unicast->setPredefinedKeyValue($key, $val);
         }
+        // Set 'production_mode' to 'false' if it's a test device.
+        // For how to register a test device, please see the developer doc.
+        $unicast->setPredefinedKeyValue("production_mode", $this->production);
+        // Set extra fields
+        foreach ($extra as $key => $val) {
+            $unicast->setExtraField($key, $val);
+        }
+        return $unicast->send();
     }
 
     /**
@@ -53,29 +49,27 @@ class AndroidPusher extends Pusher
      * @return int
      * @throws \Umeng\Android\Exception
      */
-    public function broadcast($body = [], $extra = []) {
-        try {
-            $brocast = new AndroidBroadcast();
-            $brocast->setAppMasterSecret($this->app_master_secret);
-            $brocast->setPredefinedKeyValue("appkey",           $this->app_key);
-            $brocast->setPredefinedKeyValue("timestamp",        $this->timestamp);
+    public function broadcast($body = [], $extra = [])
+    {
+        $brocast = new AndroidBroadcast();
+        $brocast->setAppMasterSecret($this->app_master_secret);
+        $brocast->setPredefinedKeyValue("appkey", $this->app_key);
+        $brocast->setPredefinedKeyValue("timestamp", $this->timestamp);
 
-            foreach ($body as $key => $val) {
-                $brocast->setPredefinedKeyValue($key, $val);
-            }
-            // Set 'production_mode' to 'false' if it's a test device.
-            // For how to register a test device, please see the developer doc.
-            $brocast->setPredefinedKeyValue("production_mode", $this->production);
-            // [optional]Set extra fields
-            // Set extra fields
-            foreach ($extra as $key => $val) {
-                $brocast->setExtraField($key, $val);
-            }
-            return $brocast->send();
-        } catch (UmengException $e) {
-            return $e->getUmengCode();
+        foreach ($body as $key => $val) {
+            $brocast->setPredefinedKeyValue($key, $val);
         }
+        // Set 'production_mode' to 'false' if it's a test device.
+        // For how to register a test device, please see the developer doc.
+        $brocast->setPredefinedKeyValue("production_mode", $this->production);
+        // [optional]Set extra fields
+        // Set extra fields
+        foreach ($extra as $key => $val) {
+            $brocast->setExtraField($key, $val);
+        }
+        return $brocast->send();
     }
+
     /** customizedcast
      * @param string $alias
      * @param array $body
@@ -85,28 +79,24 @@ class AndroidPusher extends Pusher
      */
     public function customizedcast($alias = '', $body = [], $extra = [])
     {
-        try {
-            $customizedcast = new AndroidCustomizedcast();
-            $customizedcast->setAppMasterSecret($this->app_master_secret);
-            $customizedcast->setPredefinedKeyValue("appkey", $this->app_key);
-            $customizedcast->setPredefinedKeyValue("timestamp", $this->timestamp);
-            // Set your alias here, and use comma to split them if there are multiple alias.
-            // And if you have many alias, you can also upload a file containing these alias, then
-            // use file_id to send customized notification.
-            $customizedcast->setPredefinedKeyValue("alias", $alias);
-            // Set your alias_type here
-            $customizedcast->setPredefinedKeyValue("alias_type", $this->android_alias_type);
-            foreach ($body as $key => $val) {
-                $customizedcast->setPredefinedKeyValue($key, $val);
-            }
-            foreach ($extra as $key => $val) {
-                $customizedcast->setExtraField($key, $val);
-            }
-            $customizedcast->setPredefinedKeyValue("production_mode", $this->production);
-            return $customizedcast->send();
-        } catch (UmengException $e) {
-            return $e->getUmengCode();
+        $customizedcast = new AndroidCustomizedcast();
+        $customizedcast->setAppMasterSecret($this->app_master_secret);
+        $customizedcast->setPredefinedKeyValue("appkey", $this->app_key);
+        $customizedcast->setPredefinedKeyValue("timestamp", $this->timestamp);
+        // Set your alias here, and use comma to split them if there are multiple alias.
+        // And if you have many alias, you can also upload a file containing these alias, then
+        // use file_id to send customized notification.
+        $customizedcast->setPredefinedKeyValue("alias", $alias);
+        // Set your alias_type here
+        $customizedcast->setPredefinedKeyValue("alias_type", $this->android_alias_type);
+        foreach ($body as $key => $val) {
+            $customizedcast->setPredefinedKeyValue($key, $val);
         }
+        foreach ($extra as $key => $val) {
+            $customizedcast->setExtraField($key, $val);
+        }
+        $customizedcast->setPredefinedKeyValue("production_mode", $this->production);
+        return $customizedcast->send();
     }
 
 
