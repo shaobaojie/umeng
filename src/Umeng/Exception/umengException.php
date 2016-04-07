@@ -8,8 +8,9 @@
 
 namespace Umeng\Exception;
 
+use Exception;
 
-class Exception extends \Exception
+class UmengException extends Exception
 {
     /** 友盟错误码
      * @var int

@@ -2,6 +2,7 @@
 namespace Umeng\Android;
 
 use Umeng\UmengNotification;
+use Umeng\Exception\UmengException;
 
 abstract class AndroidNotification extends UmengNotification {
 	// The array for payload, please see API doc for more information
@@ -38,7 +39,7 @@ abstract class AndroidNotification extends UmengNotification {
 	// Set key/value for $data array, for the keys which can be set please see $DATA_KEYS, $PAYLOAD_KEYS, $BODY_KEYS, $POLICY_KEYS
 	function setPredefinedKeyValue($key, $value) {
 		if (!is_string($key))
-			throw new Exception("key should be a string!");
+			throw new UmengException("key should be a string!");
 
 		if (in_array($key, $this->DATA_KEYS)) {
 			$this->data[$key] = $value;
@@ -62,9 +63,9 @@ abstract class AndroidNotification extends UmengNotification {
 			$this->data["policy"][$key] = $value;
 		} else {
 			if ($key == "payload" || $key == "body" || $key == "policy" || $key == "extra") {
-				throw new Exception("You don't need to set value for ${key} , just set values for the sub keys in it.");
+				throw new UmengException("You don't need to set value for ${key} , just set values for the sub keys in it.");
 			} else {
-				throw new Exception("Unknown key: ${key}");
+				throw new UmengException("Unknown key: ${key}");
 			}
 		}
 	}
@@ -72,7 +73,7 @@ abstract class AndroidNotification extends UmengNotification {
 	// Set extra key/value for Android notification
 	function setExtraField($key, $value) {
 		if (!is_string($key))
-			throw new Exception("key should be a string!");
+			throw new UmengException("key should be a string!");
 		$this->data["payload"]["extra"][$key] = $value;
 	}
 }

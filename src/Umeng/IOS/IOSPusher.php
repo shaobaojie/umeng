@@ -9,8 +9,8 @@
 namespace Umeng\IOS;
 
 
+use Umeng\Exception\UmengException;
 use Umeng\Pusher;
-use Umeng\Exception\Exception;
 
 class IOSPusher extends Pusher
 {
@@ -28,7 +28,7 @@ class IOSPusher extends Pusher
                 $brocast->setCustomizedField($key, $val);
             }
             return $brocast->send();
-        } catch (Exception $e) {
+        } catch (UmengException $e) {
 //            return $e;
             return $e->getUmengCode();
         }
@@ -59,7 +59,7 @@ class IOSPusher extends Pusher
                 $unicast->setCustomizedField($key, $val);
             }
             return $unicast->send();
-        } catch (Exception $e) {
+        } catch (UmengException $e) {
 //            return $e;
             return $e->getUmengCode();
         }
@@ -94,7 +94,7 @@ class IOSPusher extends Pusher
             }
             $customizedcast->setPredefinedKeyValue("production_mode", $this->production);
             return $customizedcast->send();
-        } catch (Exception $e) {
+        } catch (UmengException $e) {
 //            return $e;
             return $e->getUmengCode();
         }

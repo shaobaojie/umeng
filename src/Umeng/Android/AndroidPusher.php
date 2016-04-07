@@ -9,7 +9,7 @@
 namespace Umeng\Android;
 
 
-use Umeng\Exception\Exception;
+use Umeng\Exception\UmengException;
 use Umeng\Pusher;
 
 class AndroidPusher extends Pusher
@@ -41,7 +41,7 @@ class AndroidPusher extends Pusher
                 $unicast->setExtraField($key, $val);
             }
             return $unicast->send();
-        } catch (Exception $e) {
+        } catch (UmengException $e) {
             return $e->getUmengCode();
         }
     }
@@ -72,7 +72,7 @@ class AndroidPusher extends Pusher
                 $brocast->setExtraField($key, $val);
             }
             return $brocast->send();
-        } catch (Exception $e) {
+        } catch (UmengException $e) {
             return $e->getUmengCode();
         }
     }
@@ -104,7 +104,7 @@ class AndroidPusher extends Pusher
             }
             $customizedcast->setPredefinedKeyValue("production_mode", $this->production);
             return $customizedcast->send();
-        } catch (Exception $e) {
+        } catch (UmengException $e) {
             return $e->getUmengCode();
         }
     }
