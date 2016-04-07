@@ -42,6 +42,34 @@ class AndroidPusher extends Pusher
     }
 
     /**
+     * 列播
+     * @param string $device_tokens
+     * @param array $body
+     * @param array $extra
+     * @return mixed
+     * @throws \Umeng\Exception\UmengException
+     */
+    public function listcast ($device_tokens = '', $body = [], $extra = [])
+    {
+        $listcast = new AndroidListcast();
+        $listcast->setAppMasterSecret($this->app_master_secret);
+        $listcast->setPredefinedKeyValue("appkey", $this->app_key);
+        $listcast->setPredefinedKeyValue("timestamp", $this->timestamp);
+        // Set your device tokens here
+        $listcast->setPredefinedKeyValue("device_tokens", $device_tokens);
+        foreach ($body as $key => $val) {
+            $listcast->setPredefinedKeyValue($key, $val);
+        }
+        // Set 'production_mode' to 'false' if it's a test device.
+        // For how to register a test device, please see the developer doc.
+        $listcast->setPredefinedKeyValue("production_mode", $this->production);
+        // Set extra fields
+        foreach ($extra as $key => $val) {
+            $listcast->setExtraField($key, $val);
+        }
+        return $listcast->send();
+    }
+    /**
      * 广播
      * @param array $body
      * @param array $extra

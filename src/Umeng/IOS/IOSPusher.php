@@ -29,6 +29,25 @@ class IOSPusher extends Pusher
         return $brocast->send();
     }
 
+    public function listcast ($device_tokens = '', $aps = [], $extra = [])
+    {
+        $listcast = new IOSListcast();
+        $listcast->setAppMasterSecret($this->app_master_secret);
+        $listcast->setPredefinedKeyValue("appkey", $this->app_key);
+        $listcast->setPredefinedKeyValue("timestamp", $this->timestamp);
+        $listcast->setPredefinedKeyValue("device_tokens", $device_tokens);
+        foreach ($aps as $key => $val) {
+            $listcast->setPredefinedKeyValue($key, $val);
+        }
+        // Set 'production_mode' to 'true' if your app is under production mode
+        $listcast->setPredefinedKeyValue("production_mode", $this->production);
+        // Set customized fields
+        foreach ($extra as $key => $val) {
+            $listcast->setCustomizedField($key, $val);
+        }
+        return $listcast->send();
+    }
+
     /**发送iOS 单播消息
      * @param string $device_tokens ","分割
      * @param array $aps ['alert'=>'','badge'=>0,'sound'=>'chime','content-available'=>'']
