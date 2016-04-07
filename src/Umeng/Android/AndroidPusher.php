@@ -60,7 +60,6 @@ class AndroidPusher extends Pusher
         }
         // Set 'production_mode' to 'false' if it's a test device.
         // For how to register a test device, please see the developer doc.
-        dd($this->production);
         $brocast->setPredefinedKeyValue("production_mode", $this->production);
         // [optional]Set extra fields
         // Set extra fields
