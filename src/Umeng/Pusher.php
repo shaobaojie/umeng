@@ -31,8 +31,8 @@ class Pusher
         $this->app_key = $key;
         $this->app_master_secret = $secret;
         $this->timestamp = strval(time());
-        $this->ios_alias_type = Config('Service.umeng.ios_alias_type');
-        $this->android_alias_type = Config('Service.umeng.android_alias_type');
-        $this->production = Config('Service.umeng.production');
+        $this->ios_alias_type = config('Services.umeng.ios_alias_type');
+        $this->android_alias_type = config('Services.umeng.android_alias_type');
+        $this->production = config('Services.umeng.production');
     }
 }
