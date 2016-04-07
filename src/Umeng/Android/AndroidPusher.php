@@ -9,7 +9,6 @@
 namespace Umeng\Android;
 
 
-use Umeng\Exception\UmengException;
 use Umeng\Pusher;
 
 class AndroidPusher extends Pusher

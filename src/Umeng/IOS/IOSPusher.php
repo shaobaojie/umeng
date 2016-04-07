@@ -9,7 +9,6 @@
 namespace Umeng\IOS;
 
 
-use Umeng\Exception\UmengException;
 use Umeng\Pusher;
 
 class IOSPusher extends Pusher
