@@ -102,7 +102,7 @@ abstract class UmengNotification
 //            return $result;
             throw new UmengException($result['ret'], $httpCode, $result['data']['error_code']);
         } else {
-            return $result['data']['task_id'];
+            return $result['data']['msg_id'];
 //            return $httpCode;
         }
     }
