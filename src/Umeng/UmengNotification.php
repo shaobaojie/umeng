@@ -14,17 +14,17 @@ abstract class UmengNotification
     protected $postPath = "/api/send";
 
     // The app master secret
-    protected $appMasterSecret = NULL;
+    protected $appMasterSecret = null;
 
     /*
      * $data is designed to construct the json string for POST request. Note:
      * 1)The key/value pairs in comments are optional.
      * 2)The value for key 'payload' is set in the subclass(AndroidNotification or IOSNotification), as their payload structures are different.
      */
-    protected $data = array(
-        "appkey"          => NULL,
-        "timestamp"       => NULL,
-        "type"            => NULL,
+    protected $data = [
+        "appkey"          => null,
+        "timestamp"       => null,
+        "type"            => null,
         //"device_tokens"  => "xx",
         //"alias"          => "xx",
         //"file_id"        => "xx",
@@ -34,11 +34,11 @@ abstract class UmengNotification
         //"feedback"       => "xx",
         //"description"    => "xx",
         //"thirdparty_id"  => "xx"
-    );
+    ];
 
-    protected $DATA_KEYS = array("appkey", "timestamp", "type", "device_tokens", "alias", "alias_type", "file_id", "filter", "production_mode",
-        "feedback", "description", "thirdparty_id");
-    protected $POLICY_KEYS = array("start_time", "expire_time", "max_send_num");
+    protected $DATA_KEYS = ["appkey", "timestamp", "type", "device_tokens", "alias", "alias_type", "file_id", "filter", "production_mode",
+        "feedback", "description", "thirdparty_id"];
+    protected $POLICY_KEYS = ["start_time", "expire_time", "max_send_num"];
 
     function __construct()
     {
@@ -56,7 +56,8 @@ abstract class UmengNotification
         if (is_null($this->appMasterSecret))
             throw new UmengException("Please set your app master secret for generating the signature!");
         $this->checkArrayValues($this->data);
-        return TRUE;
+
+        return true;
     }
 
     private function checkArrayValues($arr)
