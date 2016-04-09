@@ -96,13 +96,14 @@ abstract class UmengNotification
 //        $curlErrNo = curl_errno($ch);
         $curlErr = curl_error($ch);
         curl_close($ch);
+
         if ($httpCode == "0") {
             throw new UmengException($curlErr, $httpCode, 0);
         } else if ($httpCode != "200") {
 //            return $result;
             throw new UmengException($result['ret'], $httpCode, $result['data']['error_code']);
         } else {
-            return $result['data']['msg_id'];
+            return isset($result['data']['msg_id']) ? $result['data']['msg_id'] : $result['data']['task_id'];
 //            return $httpCode;
         }
     }
