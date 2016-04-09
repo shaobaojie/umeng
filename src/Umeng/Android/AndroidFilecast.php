@@ -20,7 +20,7 @@ class AndroidFilecast extends AndroidNotification {
 			throw new UmengException("content should be a string!");
 
 		$post = array("appkey"           => $this->data["appkey"],
-					  "timestamp"        => $this->data["timestamp"], 
+					  "timestamp"        => strval(time()),
 					  "content"          => $content
 					  );
 		$url = $this->host . $this->uploadPath;

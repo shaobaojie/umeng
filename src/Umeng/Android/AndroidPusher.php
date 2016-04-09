@@ -25,7 +25,7 @@ class AndroidPusher extends Pusher
         $unicast = new AndroidUnicast();
         $unicast->setAppMasterSecret($this->app_master_secret);
         $unicast->setPredefinedKeyValue("appkey", $this->app_key);
-        $unicast->setPredefinedKeyValue("timestamp", $this->timestamp);
+        $unicast->setPredefinedKeyValue("timestamp", strval(time()));
         // Set your device tokens here
         $unicast->setPredefinedKeyValue("device_tokens", $device_tokens);
         foreach ($body as $key => $val) {
@@ -54,7 +54,7 @@ class AndroidPusher extends Pusher
         $listcast = new AndroidListcast();
         $listcast->setAppMasterSecret($this->app_master_secret);
         $listcast->setPredefinedKeyValue("appkey", $this->app_key);
-        $listcast->setPredefinedKeyValue("timestamp", $this->timestamp);
+        $listcast->setPredefinedKeyValue("timestamp", strval(time()));
         // Set your device tokens here
         $listcast->setPredefinedKeyValue("device_tokens", $device_tokens);
         foreach ($body as $key => $val) {
@@ -81,7 +81,7 @@ class AndroidPusher extends Pusher
         $brocast = new AndroidBroadcast();
         $brocast->setAppMasterSecret($this->app_master_secret);
         $brocast->setPredefinedKeyValue("appkey", $this->app_key);
-        $brocast->setPredefinedKeyValue("timestamp", $this->timestamp);
+        $brocast->setPredefinedKeyValue("timestamp", strval(time()));
 
         foreach ($body as $key => $val) {
             $brocast->setPredefinedKeyValue($key, $val);
@@ -109,7 +109,7 @@ class AndroidPusher extends Pusher
         $customizedcast = new AndroidCustomizedcast();
         $customizedcast->setAppMasterSecret($this->app_master_secret);
         $customizedcast->setPredefinedKeyValue("appkey", $this->app_key);
-        $customizedcast->setPredefinedKeyValue("timestamp", $this->timestamp);
+        $customizedcast->setPredefinedKeyValue("timestamp", strval(time()));
         // Set your alias here, and use comma to split them if there are multiple alias.
         // And if you have many alias, you can also upload a file containing these alias, then
         // use file_id to send customized notification.

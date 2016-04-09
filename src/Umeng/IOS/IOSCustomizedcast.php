@@ -29,7 +29,7 @@ class IOSCustomizedcast extends IOSNotification {
 			throw new UmengException("content should be a string!");
 
 		$post = array("appkey"           => $this->data["appkey"],
-					  "timestamp"        => $this->data["timestamp"], 
+					  "timestamp"        => strval(time()),
 					  "validation_token" => $this->data["validation_token"],
 					  "content"          => $content
 					  );
