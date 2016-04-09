@@ -13,7 +13,7 @@ class IOSListcast extends IOSNotification
     {
         parent::__construct();
         $this->data["type"] = "listcast";
-        $this->data["device_tokens"] = NULL;
+        $this->data["device_tokens"] = null;
     }
 
 }

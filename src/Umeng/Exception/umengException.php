@@ -17,7 +17,7 @@ class UmengException extends Exception
      */
     protected $error_code = 0;
 
-    public function __construct($message = '', $http_code=200, $error_code = 0)
+    public function __construct($message = '', $http_code = 200, $error_code = 0)
     {
         parent::__construct($message, $http_code);
         $this->error_code = $error_code;

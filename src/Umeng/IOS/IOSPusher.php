@@ -26,10 +26,11 @@ class IOSPusher extends Pusher
         foreach ($extra as $key => $val) {
             $brocast->setCustomizedField($key, $val);
         }
+
         return $brocast->send();
     }
 
-    public function listcast ($device_tokens = '', $aps = [], $extra = [])
+    public function listcast($device_tokens = '', $aps = [], $extra = [])
     {
         $listcast = new IOSListcast();
         $listcast->setAppMasterSecret($this->app_master_secret);
@@ -45,6 +46,7 @@ class IOSPusher extends Pusher
         foreach ($extra as $key => $val) {
             $listcast->setCustomizedField($key, $val);
         }
+
         return $listcast->send();
     }
 
@@ -72,6 +74,7 @@ class IOSPusher extends Pusher
         foreach ($extra as $key => $val) {
             $unicast->setCustomizedField($key, $val);
         }
+
         return $unicast->send();
     }
 
@@ -102,6 +105,7 @@ class IOSPusher extends Pusher
             $customizedcast->setCustomizedField($key, $val);
         }
         $customizedcast->setPredefinedKeyValue("production_mode", $this->production);
+
         return $customizedcast->send();
     }
 

@@ -50,7 +50,7 @@ class UmengServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array('umeng.ios', 'umeng.android');
+        return ['umeng.ios', 'umeng.android'];
     }
 
 }

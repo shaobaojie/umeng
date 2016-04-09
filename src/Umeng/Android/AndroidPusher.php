@@ -38,6 +38,7 @@ class AndroidPusher extends Pusher
         foreach ($extra as $key => $val) {
             $unicast->setExtraField($key, $val);
         }
+
         return $unicast->send();
     }
 
@@ -49,7 +50,7 @@ class AndroidPusher extends Pusher
      * @return mixed
      * @throws \Umeng\Exception\UmengException
      */
-    public function listcast ($device_tokens = '', $body = [], $extra = [])
+    public function listcast($device_tokens = '', $body = [], $extra = [])
     {
         $listcast = new AndroidListcast();
         $listcast->setAppMasterSecret($this->app_master_secret);
@@ -67,8 +68,10 @@ class AndroidPusher extends Pusher
         foreach ($extra as $key => $val) {
             $listcast->setExtraField($key, $val);
         }
+
         return $listcast->send();
     }
+
     /**
      * 广播
      * @param array $body
@@ -94,6 +97,7 @@ class AndroidPusher extends Pusher
         foreach ($extra as $key => $val) {
             $brocast->setExtraField($key, $val);
         }
+
         return $brocast->send();
     }
 
@@ -123,6 +127,7 @@ class AndroidPusher extends Pusher
             $customizedcast->setExtraField($key, $val);
         }
         $customizedcast->setPredefinedKeyValue("production_mode", $this->production);
+
         return $customizedcast->send();
     }
 
