@@ -112,7 +112,7 @@ abstract class UmengNotification
     function sendResponse()
     {
         //check the fields to make sure that they are not NULL
-        $this->isComplete();
+        //$this->isComplete();
 
         $url = $this->host . $this->postPath;
         $postBody = json_encode($this->data);

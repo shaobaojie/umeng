@@ -138,7 +138,7 @@ class AndroidPusher extends Pusher
         $sendStatus->setPredefinedKeyValue("appkey", $this->app_key);
         $sendStatus->setPredefinedKeyValue("timestamp", strval(time()));
         $sendStatus->setPredefinedKeyValue("task_id", $taskID);
-        return $sendStatus->send();
+        return $sendStatus->sendResponse();
     }
 
 }
