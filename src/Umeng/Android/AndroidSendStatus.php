@@ -46,7 +46,9 @@ class AndroidSendStatus extends AndroidNotification
             $this->data["policy"][$key] = $value;
         } else if ($key == 'task_id') {
             $this->data["task_id"] = $value;
-        } elseif ($key == "payload" || $key == "body" || $key == "policy" || $key == "extra") {
+        } else if ($key == 'msg_id') {
+            $this->data["msg_id"] = $value;
+        }elseif ($key == "payload" || $key == "body" || $key == "policy" || $key == "extra") {
                 throw new UmengException("You don't need to set value for ${key} , just set values for the sub keys in it.");
             } else {
                 throw new UmengException("Unknown key: ${key}");
