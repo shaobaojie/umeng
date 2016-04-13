@@ -109,4 +109,35 @@ abstract class UmengNotification
         }
     }
 
+    function sendResponse()
+    {
+        //check the fields to make sure that they are not NULL
+        $this->isComplete();
+
+        $url = $this->host . $this->postPath;
+        $postBody = json_encode($this->data);
+        $sign = md5("POST" . $url . $postBody . $this->appMasterSecret);
+        $url = $url . "?sign=" . $sign;
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_BINARYTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 60);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 60);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $postBody);
+        $result = curl_exec($ch);
+        $result = json_decode($result, true);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $curlErr = curl_error($ch);
+        curl_close($ch);
+
+        if ($httpCode == "0") {
+            throw new UmengException($curlErr, $httpCode, 0);
+        } else if ($httpCode != "200") {
+            throw new UmengException($result['ret'], $httpCode, $result['data']['error_code']);
+        } else {
+            return $result;
+        }
+    }
+
 }
