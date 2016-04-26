@@ -109,4 +109,14 @@ class IOSPusher extends Pusher
         return $customizedcast->send();
     }
 
+    public function sendStatus($taskID)
+    {
+        $sendStatus = new IOSSendStatus();
+        $sendStatus->setAppMasterSecret($this->app_master_secret);
+        $sendStatus->setPredefinedKeyValue("appkey", $this->app_key);
+        $sendStatus->setPredefinedKeyValue("timestamp", strval(time()));
+        $sendStatus->setPredefinedKeyValue("task_id", $taskID);
+        return $sendStatus->sendResponse();
+    }
+
 }

@@ -97,7 +97,6 @@ abstract class UmengNotification
 //        $curlErrNo = curl_errno($ch);
         $curlErr = curl_error($ch);
         curl_close($ch);
-
         if ($httpCode == "0") {
             throw new UmengException($curlErr, $httpCode, 0);
         } else if ($httpCode != "200") {
